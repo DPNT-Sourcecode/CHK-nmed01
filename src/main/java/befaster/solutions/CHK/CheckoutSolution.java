@@ -1,5 +1,7 @@
 package befaster.solutions.CHK;
 
+import java.awt.*;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -21,7 +23,16 @@ public class CheckoutSolution {
 
     private List<Item> parseSkus(String skus) {
 
-        skus.spl
+        List<String> skusList = Arrays.asList(skus.split("\\s+"));
+
+        skusList.
+
 
     }
+
+
+    private Item parseSku(String sku) {
+        switch (sku)
+    }
+
 }
