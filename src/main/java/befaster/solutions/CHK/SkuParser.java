@@ -21,7 +21,7 @@ public class SkuParser {
         }
 
         return skuStringList.stream()
-                .flatMap(skuString -> Stream.of(skuString.toCharArray()))
+                .map(CharSequence::chars).flatMap((c -> (char) c)
                 .map(SkuParser::parseSku)
                 .collect(Collectors.toList());
     }
