@@ -34,7 +34,7 @@ public class SkuParser {
     }
 
     private static List<Character> getValidSkus() {
-        return Arrays.asList('A', 'B', 'C', 'D');
+        return Arrays.asList('A', 'B', 'C', 'D', 'E');
     }
 
     private static Item parseSku(char sku) {
@@ -47,6 +47,8 @@ public class SkuParser {
                 return new Item('C', 20);
             case 'D':
                 return new Item('D', 15);
+            case 'E':
+                return new Item('E', 40);
         }
 
         throw new SkuParsingException("sku not recognised");

@@ -12,9 +12,9 @@ public class SkuParserTest {
     @Test
     public void testValid() {
 
-        String input1 = "A A A A B B C D A";
-        String input2 = "AAAABBCDA";
-        String input3 = "AAA ABB CDA";
+        String input1 = "A A A A B B C D A E";
+        String input2 = "AAAABBCDAE";
+        String input3 = "AAA ABB CDAE";
 
         List<Item> expectedItems = Arrays.asList(
                 new Item('A', 50),
@@ -25,7 +25,8 @@ public class SkuParserTest {
                 new Item('B', 30),
                 new Item('C', 20),
                 new Item('D', 15),
-                new Item('A', 50)
+                new Item('A', 50),
+                new Item('E', 40)
         );
 
 
@@ -45,7 +46,7 @@ public class SkuParserTest {
 
         String input1 = "A A A A B B C D Aa";
         String input2 = "A A A A B B C D 1";
-        String input3 = "A A A A E B B C D";
+        String input3 = "A A A A F B B C D";
         String input4 = "012A";
 
         assertThat(SkuParser.isValidInput(input1)).isFalse();
