@@ -1,5 +1,8 @@
 package befaster.solutions.CHK;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +29,11 @@ public class SkuParser {
     }
 
     private static List<String> splitInput(String skus) {
+
+        if(StringUtils.isBlank(skus)) {
+            return new ArrayList<>();
+        }
+
         return Arrays.asList(skus.split("\\s+"));
     }
 

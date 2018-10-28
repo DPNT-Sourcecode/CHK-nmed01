@@ -19,6 +19,8 @@ dependencies {
     compile 'ro.ghionoiu:tdl-client-java:0.24.0'
     compile 'com.mashape.unirest:unirest-java:1.4.9'
     compile 'com.google.guava:guava:18.0'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+
 
 
     testCompile ('junit:junit:4.12') {
