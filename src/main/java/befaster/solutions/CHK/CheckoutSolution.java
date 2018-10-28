@@ -21,34 +21,6 @@ public class CheckoutSolution {
 
     }
 
-    private static List<Item> parseSkus(String skus) {
 
-        List<String> skusList = Arrays.asList(skus.split("\\s+"));
-
-        skusList.stream().filter(skuString -> {
-            return skuString.length() > 1 && !getValidSkus().contains(skuString.charAt(0));
-        }).findAny().isPresent();
-
-
-    }
-
-    private static List<Character> getValidSkus() {
-        return Arrays.asList('A', 'B', 'C', 'D');
-    }
-
-    private static Item parseSku(char sku) {
-        switch (sku) {
-            case 'A':
-                return new Item('A', 50);
-            case 'B':
-                return new Item('B', 30);
-            case 'C':
-                return new Item('C', 20);
-            case 'D':
-                return new Item('D', 15);
-        }
-
-        throw new SkuParsingException()
-    }
 
 }
