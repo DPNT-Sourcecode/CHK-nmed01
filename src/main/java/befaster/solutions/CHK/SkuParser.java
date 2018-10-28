@@ -25,7 +25,7 @@ public class SkuParser {
     }
 
     private static String cleanInput(String input) {
-        return input.replaceAll("\\s+", input);
+        return input.replaceAll("\\s+", "");
     }
 
     private static boolean isValidSkuString(String skuString) {

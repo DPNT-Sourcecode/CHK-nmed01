@@ -46,6 +46,7 @@ public class CheckoutSolutionTest {
         assertThat(checkoutSolution.checkout("A A")).isEqualTo(100);
         assertThat(checkoutSolution.checkout("A A A")).isEqualTo(130);
         assertThat(checkoutSolution.checkout("A A A A")).isEqualTo(180);
+        assertThat(checkoutSolution.checkout("AAAA")).isEqualTo(180);
 
 
         assertThat(checkoutSolution.checkout("A A A B B")).isEqualTo(175);
