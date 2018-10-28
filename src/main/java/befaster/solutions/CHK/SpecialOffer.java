@@ -16,7 +16,7 @@ public interface SpecialOffer {
 
     int getAmountSaved(List<Item> itemsInShoppingBasket);
 
-    class AmountSavedComparator implements Comparator<SimpleSpecialOffer> {
+    class AmountSavedComparator implements Comparator<SpecialOffer> {
 
         private List<Item> itemsInShoppingBasket;
         public AmountSavedComparator (List<Item> itemsInShoppingBasket) {
@@ -24,7 +24,7 @@ public interface SpecialOffer {
         }
 
         @Override
-        public int compare(SimpleSpecialOffer o1, SimpleSpecialOffer o2) {
+        public int compare(SpecialOffer o1, SpecialOffer o2) {
             return Integer.compare(o1.getAmountSaved(itemsInShoppingBasket), o2.getAmountSaved(itemsInShoppingBasket));
         }
     }

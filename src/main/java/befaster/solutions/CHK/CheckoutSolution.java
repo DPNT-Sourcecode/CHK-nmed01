@@ -1,6 +1,7 @@
 package befaster.solutions.CHK;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -17,7 +18,7 @@ public class CheckoutSolution {
             return -1;
         }
 
-        List<SimpleSpecialOffer> allSpecialOffers = getSpecialOffers();
+        List<SpecialOffer> allSpecialOffers = getSpecialOffers();
         List<Item> shoppingBasket = SkuParser.parseSkus(skus);
 
         ShoppingBasketWithSpecialOffersApplied shoppingBasketWithSpecialOffersApplied = applyPromotions(shoppingBasket, allSpecialOffers);
@@ -25,7 +26,7 @@ public class CheckoutSolution {
         return shoppingBasketWithSpecialOffersApplied.getPrice();
     }
 
-    private ShoppingBasketWithSpecialOffersApplied applyPromotions(List<Item> shoppingBasket, List<SimpleSpecialOffer> allSpecialOffers) {
+    private ShoppingBasketWithSpecialOffersApplied applyPromotions(List<Item> shoppingBasket, List<SpecialOffer> allSpecialOffers) {
 
         List<SimpleSpecialOffer> applicableSpecialOffers = new ArrayList<>();
         List<Item> itemsNotInPromotion = new ArrayList<>(shoppingBasket);
@@ -40,7 +41,7 @@ public class CheckoutSolution {
 
     }
 
-    private SimpleSpecialOffer getAvailableSpecialOffer(List<Item> items, List<SimpleSpecialOffer> allSpecialOffers) {
+    private SimpleSpecialOffer getAvailableSpecialOffer(List<Item> items, List<SpecialOffer> allSpecialOffers) {
         return allSpecialOffers.stream()
                 .filter(offer -> offer.doesApply(items))
                 .sorted(new SimpleSpecialOffer.AmountSavedComparator(items).reversed())
@@ -51,7 +52,7 @@ public class CheckoutSolution {
         return allSpecialOffers.stream().anyMatch(offer -> offer.doesApply(items));
     }
 
-    private List<SimpleSpecialOffer> getSpecialOffers() {
+    private List<SpecialOffer> getSpecialOffers() {
         return asList(
                 new SimpleSpecialOffer( //3A for 130
                         asList(A, A, A),
@@ -112,7 +113,8 @@ public class CheckoutSolution {
                 new SimpleSpecialOffer( // 3V for 130
                         asList(V, V, V),
                         130
-                )
+                ),
+                new AnyNOfGroupSpecialOffer(3, Arrays.asList(S, T, X, Y, Z), 45)
 
         );
     }
