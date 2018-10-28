@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class SkuParser {
 
-    private static List<Item> parseSkus(String skus) throws SkuParsingException {
+    public static List<Item> parseSkus(String skus) {
 
         List<String> skuStringList = Arrays.asList(skus.split("\\s+"));
 
@@ -45,7 +45,7 @@ public class SkuParser {
                 return new Item('D', 15);
         }
 
-        throw new RuntimeException("sku not recognised");
+        throw new SkuParsingException("sku not recognised");
     }
 
 }
