@@ -99,6 +99,17 @@ public class CheckoutSolutionTest {
     @Test
     public void test_R3() {
 
+        assertThat(checkoutSolution.checkout("F")).isEqualTo(10);
+        assertThat(checkoutSolution.checkout("FF")).isEqualTo(20);
+        assertThat(checkoutSolution.checkout("FFF")).isEqualTo(20);
+        assertThat(checkoutSolution.checkout("FFFF")).isEqualTo(30);
+        assertThat(checkoutSolution.checkout("FFFFF")).isEqualTo(40);
+        assertThat(checkoutSolution.checkout("FFFFFF")).isEqualTo(40);
+        assertThat(checkoutSolution.checkout("FFFFFFF")).isEqualTo(50);
+        assertThat(checkoutSolution.checkout("FFFFFFFA")).isEqualTo(100);
+        assertThat(checkoutSolution.checkout("FFFFFFFAA")).isEqualTo(150);
+        assertThat(checkoutSolution.checkout("FFFFFFFAAA")).isEqualTo(180);
+
     }
 
 }
