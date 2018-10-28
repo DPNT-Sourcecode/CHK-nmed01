@@ -13,7 +13,7 @@ public class SkuParser {
 
     public static List<Item> parseSkus(String input) {
 
-        List<String> skuStringList = splitInput(input);
+        String skuString = splitInput(input);
 
         if(!isValidSkuList(skuStringList)) {
 
@@ -30,20 +30,26 @@ public class SkuParser {
         return isValidSkuList(splitInput(input));
     }
 
-    private static List<String> splitInput(String skus) {
-
-        if(StringUtils.isBlank(skus)) {
-            return new ArrayList<>();
-        }
-
-        return Arrays.asList(skus.split("\\s+"));
+    private static String cleanInput(String input) {
+        return input.replaceAll("\\s+", input);
     }
+//    private static List<String> splitInput(String skus) {
+//
+//        if(StringUtils.isBlank(skus)) {
+//            return new ArrayList<>();
+//        }
+//
+//        return Arrays.asList(skus.split("\\s+"));
+//    }
 
     private static boolean isValidSkuList(List<String> skuList) {
         return skuList.stream().allMatch(SkuParser::isValidSkuString);
     }
 
     private static boolean isValidSkuString(String skuString) {
+
+        skuString.chars().mapToObj()
+
         return skuString.length() == 1 && getValidSkus().contains(skuString.charAt(0));
     }
 
