@@ -77,7 +77,6 @@ public class SpecialOfferTest {
         ), 100);
 
 
-
         assertThat(specialOffer1.getAmountSaved()).isEqualTo(20);
         assertThat(specialOffer2.getAmountSaved()).isEqualTo(10);
         assertThat(specialOffer3.getAmountSaved()).isEqualTo(-80);
@@ -98,6 +97,30 @@ public class SpecialOfferTest {
         );
 
         specialOffer.apply(shoppingBasket2);
+
+
+    }
+
+    @Test
+    public void amountSavedComparatorTest() {
+
+        SpecialOffer specialOffer = new SpecialOffer(Arrays.asList(
+                new Item('A', 60),
+                new Item('A', 60)
+        ), 100);
+
+        List<Item> shoppingBasket1 = Arrays.asList(
+                new Item('A', 60),
+                new Item('A', 60),
+                new Item('B', 20)
+        );
+
+        List<Item> shoppingBasketAfterPromotion = Arrays.asList(
+                new Item('B', 20)
+        );
+
+
+        Compare.
 
 
     }
