@@ -98,7 +98,7 @@ public class CheckoutSolutionTest {
 
     @Test
     public void test_R3() {
-        
+
     }
 
 }
