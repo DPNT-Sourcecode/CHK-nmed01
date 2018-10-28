@@ -8,7 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class SpecialOfferTest {
+public class SimpleSpecialOfferTest {
 
     @Test
     public void doesApplyTest() {
@@ -77,9 +77,9 @@ public class SpecialOfferTest {
         ), 100);
 
 
-        assertThat(specialOffer1.getAmountSaved()).isEqualTo(20);
-        assertThat(specialOffer2.getAmountSaved()).isEqualTo(10);
-        assertThat(specialOffer3.getAmountSaved()).isEqualTo(-80);
+        assertThat(specialOffer1.getAmountSaved(null)).isEqualTo(20);
+        assertThat(specialOffer2.getAmountSaved(null)).isEqualTo(10);
+        assertThat(specialOffer3.getAmountSaved(null)).isEqualTo(-80);
 
     }
 
@@ -123,7 +123,7 @@ public class SpecialOfferTest {
 
         List<SimpleSpecialOffer> offers = Arrays.asList(specialOffer2, specialOffer1, specialOffer3);
 
-        offers.sort(new SimpleSpecialOffer.AmountSavedComparator().reversed());
+        offers.sort(new SimpleSpecialOffer.AmountSavedComparator(null).reversed());
 
         assertThat(offers).containsExactly(specialOffer1, specialOffer2, specialOffer3);
 
