@@ -16,6 +16,7 @@ Our price table and offers:
 | C    | 20    |                        |
 | D    | 15    |                        |
 | E    | 40    | 2E get one B free      |
+| F    | 10    | 2F get one F free      |
 +------+-------+------------------------+
  */
 
@@ -34,7 +35,7 @@ public class CheckoutSolutionTest {
 
         assertThat(checkoutSolution.checkout("")).isEqualTo(0);
 
-        assertThat(checkoutSolution.checkout("F")).isEqualTo(-1);
+        assertThat(checkoutSolution.checkout("Z")).isEqualTo(-1);
         assertThat(checkoutSolution.checkout("test test")).isEqualTo(-1);
 
 
@@ -43,6 +44,7 @@ public class CheckoutSolutionTest {
         assertThat(checkoutSolution.checkout("C")).isEqualTo(20);
         assertThat(checkoutSolution.checkout("D")).isEqualTo(15);
         assertThat(checkoutSolution.checkout("E")).isEqualTo(40);
+        assertThat(checkoutSolution.checkout("F")).isEqualTo(10);
 
 
         assertThat(checkoutSolution.checkout("A A")).isEqualTo(100);
@@ -94,5 +96,9 @@ public class CheckoutSolutionTest {
 
     }
 
+    @Test
+    public void test_R3() {
+        
+    }
 
 }
