@@ -22,13 +22,15 @@ public class AnyNOfGroupSpecialOfferTest {
 
         assertThat(specialOffer.doesApply(shoppingBasket1)).isTrue();
         assertThat(specialOffer.apply(shoppingBasket1)).containsOnlyOnce(X);
+        assertThat(specialOffer.getAmountSaved(shoppingBasket1)).isEqualTo(16);
 
         assertThat(specialOffer.doesApply(shoppingBasket2)).isTrue();
         assertThat(specialOffer.apply(shoppingBasket2)).containsOnlyOnce(X);
+        assertThat(specialOffer.getAmountSaved(shoppingBasket2)).isEqualTo(16);
 
         assertThat(specialOffer.doesApply(shoppingBasket3)).isTrue();
         assertThat(specialOffer.apply(shoppingBasket3)).containsExactlyInAnyOrder(X, X);
-
+        assertThat(specialOffer.getAmountSaved(shoppingBasket3)).isEqualTo(14);
 
         assertThat(specialOffer.doesApply(shoppingBasket4)).isFalse();
 
