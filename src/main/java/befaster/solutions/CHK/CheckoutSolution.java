@@ -9,18 +9,7 @@ import java.util.stream.Stream;
 import static befaster.solutions.CHK.Items.*;
 import static java.util.Arrays.asList;
 
-/*
-+------+-------+------------------------+
-| Item | Price | Special offers         |
-+------+-------+------------------------+
-| A    | 50    | 3A for 130, 5A for 200 |
-| B    | 30    | 2B for 45              |
-| C    | 20    |                        |
-| D    | 15    |                        |
-| E    | 40    | 2E get one B free      |
-| F    | 10    | 2F get one F free      |
-+------+-------+------------------------+
- */
+
 public class CheckoutSolution {
     public Integer checkout(String skus) {
 
