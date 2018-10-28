@@ -29,8 +29,6 @@ public class SkuParserTest {
         assertThat(SkuParser.isValidInput(input)).isTrue();
         assertThat(SkuParser.parseSkus(input)).containsExactlyInAnyOrderElementsOf(expectedItems);
 
-
-
     }
 
     @Test
