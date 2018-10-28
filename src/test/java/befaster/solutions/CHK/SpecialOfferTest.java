@@ -124,7 +124,7 @@ public class SpecialOfferTest {
 
         List<SpecialOffer> offers = Arrays.asList(specialOffer2, specialOffer1, specialOffer3);
 
-        offers.sort(new SpecialOffer.AmountSavedComparator());
+        offers.sort(new SpecialOffer.AmountSavedComparator().reversed());
 
         assertThat(offers).containsExactly(specialOffer1, specialOffer2, specialOffer3);
 

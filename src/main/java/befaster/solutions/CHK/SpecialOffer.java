@@ -68,7 +68,7 @@ public class SpecialOffer {
 
         @Override
         public int compare(SpecialOffer o1, SpecialOffer o2) {
-            return 0;
+            return Integer.compare(o1.getAmountSaved(), o2.getAmountSaved());
         }
     }
 
