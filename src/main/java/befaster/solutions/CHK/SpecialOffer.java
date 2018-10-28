@@ -1,6 +1,7 @@
 package befaster.solutions.CHK;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class SpecialOffer {
@@ -59,7 +60,11 @@ public class SpecialOffer {
 
     }
 
-    public static CustomerGainComparator implements Comparator()
+    public static CustomerGainComparator implements Comparator<SpecialOffer>
+
+    {
+
+    }
 
 
 }
