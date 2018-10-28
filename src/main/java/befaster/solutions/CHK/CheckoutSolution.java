@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static befaster.solutions.CHK.Items.*;
 import static java.util.Arrays.asList;
@@ -68,7 +69,7 @@ public class CheckoutSolution {
                         130
                 ),
                 new SpecialOffer( //5A for 200
-                        asList(A, A, A, A, A),
+                        nTimes(A, 5),
                         200
                 ),
                 new SpecialOffer( //2B for 45
@@ -77,29 +78,42 @@ public class CheckoutSolution {
                 ),
                 new SpecialOffer( // 2E get one B free
                         asList(E, E, B),
-                        80
+                        Stream.of(E, E).mapToInt(Item::getPrice).sum()
                 ),
                 new SpecialOffer( // 2F get one F free
                         asList(F, F, F),
-                        20
+                        Stream.of(F, F).mapToInt(Item::getPrice).sum()
                 ),
                 new SpecialOffer( // 5H for 45
                         asList(H, H, H, H, H),
                         45
                 ),
-                new SpecialOffer( // 10H for 45
-                        IntStream.range(0, 9).mapToObj(i -> H).collect(Collectors.toList()),
+                new SpecialOffer( // 10H for 80
+                        nTimes(H, 10),
                         80
                 ),
-                new SpecialOffer( // 2K for 150
-                        asList(K, K),
-                        150
+                new SpecialOffer( //3N get one M free
+                        asList(N, N, N, M),
+                        Stream.of(N, N, N).mapToInt(Item::getPrice).sum()
                 ),
-                new SpecialOffer( // 2K for 150
-                        asList(K, K),
-                        150
+                new SpecialOffer( // 5P for 200
+                        nTimes(P, 5),
+                        200
+                ),
+                new SpecialOffer( // 3Q for 80
+                        nTimes(Q, 3),
+                        80
+                ),
+                new SpecialOffer( // 3Q for 80
+                        nTimes(Q, 3),
+                        80
                 )
+
         );
+    }
+
+    private List<Item> nTimes(Item item, int times) {
+        return IntStream.range(0, times).mapToObj(i -> item).collect(Collectors.toList());
     }
 
 
