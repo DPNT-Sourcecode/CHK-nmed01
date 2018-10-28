@@ -21,18 +21,29 @@ public class CheckoutSolution {
 
     }
 
-    private List<Item> parseSkus(String skus) {
+    private static List<Item> parseSkus(String skus) {
 
         List<String> skusList = Arrays.asList(skus.split("\\s+"));
 
-        skusList.
+        skusList.stream().filter(skuString -> {
+            return skuString.length() > 1
+        })
 
 
     }
 
 
-    private Item parseSku(String sku) {
-        switch (sku)
+    private static Item parseSku(char sku) {
+        switch (sku) {
+            case 'A':
+                return new Item('A', 50);
+            case 'B':
+                return new Item('B', 30);
+            case 'C':
+                return new Item('C', 20);
+            case 'D':
+                return new Item('D', 15);
+        }
     }
 
 }
