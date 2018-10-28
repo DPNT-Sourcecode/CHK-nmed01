@@ -38,7 +38,7 @@ public class AnyNOfGroupSpecialOffer implements SpecialOffer{
                 .limit(minNumber)
                 .collect(Collectors.toList());
 
-        remainingItems.removeAll(groupItems);
+        groupItems.forEach(remainingItems::remove);
 
         return remainingItems;
     }

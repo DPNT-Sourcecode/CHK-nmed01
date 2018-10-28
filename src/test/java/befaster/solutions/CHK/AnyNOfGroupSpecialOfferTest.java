@@ -20,6 +20,7 @@ public class AnyNOfGroupSpecialOfferTest {
 
 
         assertThat(specialOffer.apply(shoppingBasket1)).containsOnlyOnce(X);
+
         assertThat(specialOffer.apply(shoppingBasket2)).containsOnlyOnce(X);
         assertThat(specialOffer.apply(shoppingBasket3)).containsExactlyInAnyOrder(X, X);
 
