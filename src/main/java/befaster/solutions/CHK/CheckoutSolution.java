@@ -47,7 +47,10 @@ public class CheckoutSolution {
     }
 
     private SpecialOffer getAvailableSpecialOffer(List<Item> items, List<SpecialOffer> allSpecialOffers) {
-        return allSpecialOffers.stream().filter(offer -> offer.doesApply(items)).findFirst().get();
+        return allSpecialOffers.stream()
+                .filter(offer -> offer.doesApply(items))
+                .sorted(new SpecialOffer.AmountSavedComparator().reversed())
+                .findFirst().get();
     }
 
     private boolean isSpecialOfferAvailable(List<Item> items, List<SpecialOffer> allSpecialOffers) {
