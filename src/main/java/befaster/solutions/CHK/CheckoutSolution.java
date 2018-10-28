@@ -3,6 +3,7 @@ package befaster.solutions.CHK;
 import java.util.ArrayList;
 import java.util.List;
 
+import static befaster.solutions.CHK.Items.*;
 import static java.util.Arrays.asList;
 
 /*
@@ -61,39 +62,27 @@ public class CheckoutSolution {
     private List<SpecialOffer> getSpecialOffers() {
         return asList(
                 new SpecialOffer( //3A for 130
-                        asList(
-                                new Item('A', 50),
-                                new Item('A', 50),
-                                new Item('A', 50)),
+                        asList(A, A, A),
                         130
                 ),
                 new SpecialOffer( //5A for 200
-                        asList(
-                                new Item('A', 50),
-                                new Item('A', 50),
-                                new Item('A', 50),
-                                new Item('A', 50),
-                                new Item('A', 50)),
+                        asList(A, A, A, A, A),
                         200
                 ),
                 new SpecialOffer( //2B for 45
-                        asList(
-                                new Item('B', 30),
-                                new Item('B', 30)),
+                        asList(B, B),
                         45
                 ),
                 new SpecialOffer( // 2E get one B free
-                        asList(
-                                new Item('E', 40),
-                                new Item('E', 40),
-                                new Item('B', 30)),
+                        asList(E, E, B),
                         80
                 ),
                 new SpecialOffer( // 2F get one F free
-                        asList(
-                                new Item('F', 10),
-                                new Item('F', 10),
-                                new Item('F', 10)),
+                        asList(F, F, F),
+                        20
+                ),
+                new SpecialOffer( // 2F get one F free
+                        asList(F, F, F),
                         20
                 )
         );
