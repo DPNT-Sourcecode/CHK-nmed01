@@ -18,7 +18,7 @@ import static java.util.Arrays.asList;
 public class CheckoutSolution {
     public Integer checkout(String skus) {
 
-        if (SkuParser.isValidInput(skus)) {
+        if (!SkuParser.isValidInput(skus)) {
             return -1;
         }
 
