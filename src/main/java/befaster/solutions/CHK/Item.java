@@ -1,5 +1,7 @@
 package befaster.solutions.CHK;
 
+import java.util.Comparator;
+
 public class Item {
 
     private final char code;
@@ -35,5 +37,13 @@ public class Item {
         int result = (int) code;
         result = 31 * result + price;
         return result;
+    }
+
+    public static class PriceComparator implements Comparator<Item> {
+
+        @Override
+        public int compare(Item o1, Item o2) {
+            return Integer.compare(o1.getPrice(), o2.getPrice());
+        }
     }
 }
