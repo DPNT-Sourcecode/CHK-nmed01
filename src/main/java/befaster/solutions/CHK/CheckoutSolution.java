@@ -81,6 +81,10 @@ public class CheckoutSolution {
                         nTimes(H, 10),
                         80
                 ),
+                new SpecialOffer( // 10H for 80
+                        nTimes(K, 2),
+                        150
+                ),
                 new SpecialOffer( //3N get one M free
                         asList(N, N, N, M),
                         Stream.of(N, N, N).mapToInt(Item::getPrice).sum()

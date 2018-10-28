@@ -98,4 +98,14 @@ public class CheckoutSolutionTest {
 
     }
 
+
+    @Test
+    public void test_R4() {
+
+        assertThat(checkoutSolution.checkout("KK")).isEqualTo(150);
+        assertThat(checkoutSolution.checkout("KKK")).isEqualTo(230);
+        assertThat(checkoutSolution.checkout("KKKK")).isEqualTo(300);
+
+    }
+
 }
