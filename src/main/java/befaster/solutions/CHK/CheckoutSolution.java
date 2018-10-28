@@ -2,6 +2,8 @@ package befaster.solutions.CHK;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static befaster.solutions.CHK.Items.*;
 import static java.util.Arrays.asList;
@@ -81,9 +83,21 @@ public class CheckoutSolution {
                         asList(F, F, F),
                         20
                 ),
-                new SpecialOffer( // 2F get one F free
-                        asList(F, F, F),
-                        20
+                new SpecialOffer( // 5H for 45
+                        asList(H, H, H, H, H),
+                        45
+                ),
+                new SpecialOffer( // 10H for 45
+                        IntStream.range(0, 9).mapToObj(i -> H).collect(Collectors.toList()),
+                        80
+                ),
+                new SpecialOffer( // 2K for 150
+                        asList(K, K),
+                        150
+                ),
+                new SpecialOffer( // 2K for 150
+                        asList(K, K),
+                        150
                 )
         );
     }
