@@ -49,7 +49,7 @@ public class Items {
     public static final Item H = new Item('H', 10);
     public static final Item I = new Item('I', 35);
     public static final Item J = new Item('J', 60);
-    public static final Item K = new Item('K', 80);
+    public static final Item K = new Item('K', 70);
     public static final Item L = new Item('L', 90);
     public static final Item M = new Item('M', 15);
     public static final Item N = new Item('N', 40);
@@ -57,14 +57,14 @@ public class Items {
     public static final Item P = new Item('P', 50);
     public static final Item Q = new Item('Q', 30);
     public static final Item R = new Item('R', 50);
-    public static final Item S = new Item('S', 30);
+    public static final Item S = new Item('S', 20);
     public static final Item T = new Item('T', 20);
     public static final Item U = new Item('U', 40);
     public static final Item V = new Item('V', 50);
     public static final Item W = new Item('W', 20);
-    public static final Item X = new Item('X', 90);
-    public static final Item Y = new Item('Y', 10);
-    public static final Item Z = new Item('Z', 50);
+    public static final Item X = new Item('X', 17);
+    public static final Item Y = new Item('Y', 20);
+    public static final Item Z = new Item('Z', 21);
 
 
     public static final List<Item> allItems = Collections.unmodifiableList(Arrays.asList(

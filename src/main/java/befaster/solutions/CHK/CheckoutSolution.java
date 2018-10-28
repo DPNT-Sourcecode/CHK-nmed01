@@ -28,11 +28,11 @@ public class CheckoutSolution {
 
     private ShoppingBasketWithSpecialOffersApplied applyPromotions(List<Item> shoppingBasket, List<SpecialOffer> allSpecialOffers) {
 
-        List<SimpleSpecialOffer> applicableSpecialOffers = new ArrayList<>();
+        List<SpecialOffer> applicableSpecialOffers = new ArrayList<>();
         List<Item> itemsNotInPromotion = new ArrayList<>(shoppingBasket);
 
         while (isSpecialOfferAvailable(itemsNotInPromotion, allSpecialOffers)) {
-            SimpleSpecialOffer specialOffer = getAvailableSpecialOffer(itemsNotInPromotion, allSpecialOffers);
+            SpecialOffer specialOffer = getAvailableSpecialOffer(itemsNotInPromotion, allSpecialOffers);
             itemsNotInPromotion = specialOffer.apply(itemsNotInPromotion);
             applicableSpecialOffers.add(specialOffer);
         }
@@ -41,14 +41,14 @@ public class CheckoutSolution {
 
     }
 
-    private SimpleSpecialOffer getAvailableSpecialOffer(List<Item> items, List<SpecialOffer> allSpecialOffers) {
+    private SpecialOffer getAvailableSpecialOffer(List<Item> items, List<SpecialOffer> allSpecialOffers) {
         return allSpecialOffers.stream()
                 .filter(offer -> offer.doesApply(items))
-                .sorted(new SimpleSpecialOffer.AmountSavedComparator(items).reversed())
+                .sorted(new SpecialOffer.AmountSavedComparator(items).reversed())
                 .findFirst().get();
     }
 
-    private boolean isSpecialOfferAvailable(List<Item> items, List<SimpleSpecialOffer> allSpecialOffers) {
+    private boolean isSpecialOfferAvailable(List<Item> items, List<SpecialOffer> allSpecialOffers) {
         return allSpecialOffers.stream().anyMatch(offer -> offer.doesApply(items));
     }
 
