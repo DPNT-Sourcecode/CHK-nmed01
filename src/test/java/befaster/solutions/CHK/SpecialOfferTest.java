@@ -57,6 +57,33 @@ public class SpecialOfferTest {
 
     }
 
+    @Test
+    public void getAmountSavedTest() {
+
+        SpecialOffer specialOffer1 = new SpecialOffer(Arrays.asList(
+                new Item('A', 60),
+                new Item('A', 60)
+        ), 100);
+
+        SpecialOffer specialOffer2 = new SpecialOffer(Arrays.asList(
+                new Item('A', 10),
+                new Item('B', 20),
+                new Item('C', 30)
+        ), 50);
+
+        SpecialOffer specialOffer3 = new SpecialOffer(Arrays.asList(
+                new Item('A', 10),
+                new Item('A', 10)
+        ), 100);
+
+
+
+        assertThat(specialOffer1.getAmountSaved()).isEqualTo(20);
+        assertThat(specialOffer2.getAmountSaved()).isEqualTo(10);
+        assertThat(specialOffer3.getAmountSaved()).isEqualTo(-80);
+
+    }
+
     @Test(expected = SpecialOfferException.class)
     public void applyOnNotApplicableShoppingBasketTest() {
 

@@ -22,6 +22,10 @@ public class SpecialOffer {
         return promotionPrice;
     }
 
+    public int getAmountSaved() {
+        return items.stream().mapToInt(Item::getPrice).sum() - promotionPrice;
+    }
+
     public boolean doesApply(List<Item> itemsInShoppingBasket) {
 
         List<Item> remainingInShoppingBasket = new ArrayList<>(itemsInShoppingBasket);
@@ -60,10 +64,12 @@ public class SpecialOffer {
 
     }
 
-    public static CustomerGainComparator implements Comparator<SpecialOffer>
+    public static class AmountSavedComparator implements Comparator<SpecialOffer> {
 
-    {
-
+        @Override
+        public int compare(SpecialOffer o1, SpecialOffer o2) {
+            return 0;
+        }
     }
 
 
