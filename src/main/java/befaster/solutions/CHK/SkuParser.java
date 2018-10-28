@@ -2,10 +2,12 @@ package befaster.solutions.CHK;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SkuParser {
 
@@ -19,7 +21,7 @@ public class SkuParser {
         }
 
         return skuStringList.stream()
-                .map(skuString -> skuString.charAt(0))
+                .flatMap(skuString -> Stream.of(skuString.toCharArray()))
                 .map(SkuParser::parseSku)
                 .collect(Collectors.toList());
     }
