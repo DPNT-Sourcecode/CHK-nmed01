@@ -1,5 +1,6 @@
 package befaster.solutions.CHK;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,24 +24,32 @@ public class AnyNOfGroupSpecialOffer implements SpecialOffer{
 
     @Override
     public boolean doesApply(List<Item> itemsInShoppingBasket) {
-        return itemsInShoppingBasket.stream().filter(group::contains).count() > minNumber;
+        return itemsInShoppingBasket.stream().filter(group::contains).count() >= minNumber;
     }
 
     @Override
     public List<Item> apply(List<Item> itemsInShoppingBasket) {
 
-        List<Item> groupItemsInShoppingBasket = itemsInShoppingBasket.stream()
-                .filter(group::contains).collect(Collectors.toList());
+        List<Item> remainingItems = new ArrayList<>(itemsInShoppingBasket);
 
-        groupItemsInShoppingBasket.sort(new Item.PriceComparator().reversed());
+        List<Item> groupItems = itemsInShoppingBasket.stream()
+                .filter(group::contains)
+                .sorted(new Item.PriceComparator().reversed())
+                .limit(minNumber)
+                .collect(Collectors.toList());
 
-        groupItemsInShoppingBasket.stream().l
+        remainingItems.removeAll(groupItems);
 
-        return null;
+        return remainingItems;
     }
 
     @Override
     public int getAmountSaved(List<Item> itemsInShoppingBasket) {
-        return 0;
+        return itemsInShoppingBasket.stream()
+                .filter(group::contains)
+                .sorted(new Item.PriceComparator().reversed())
+                .limit(minNumber)
+                .mapToInt(Item::getPrice)
+                .sum() - promotionPrice;
     }
 }
