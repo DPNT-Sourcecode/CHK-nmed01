@@ -34,26 +34,14 @@ public class SkuParser {
     }
 
     private static List<Character> getValidSkus() {
-        return Arrays.asList('A', 'B', 'C', 'D', 'E', 'F');
+        return Items.allItems.stream().map(Item::getCode).collect(Collectors.toList());
     }
 
     private static Item parseSku(char sku) {
-        switch (sku) {
-            case 'A':
-                return new Item('A', 50);
-            case 'B':
-                return new Item('B', 30);
-            case 'C':
-                return new Item('C', 20);
-            case 'D':
-                return new Item('D', 15);
-            case 'E':
-                return new Item('E', 40);
-            case 'F':
-                return new Item('F', 10);
-        }
+        return Items.allItems.stream().filter(item -> item.getCode() == sku).findFirst().orElseThrow(
+                () -> new SkuParsingException("sku not recognised")
+        );
 
-        throw new SkuParsingException("sku not recognised");
     }
 
 }

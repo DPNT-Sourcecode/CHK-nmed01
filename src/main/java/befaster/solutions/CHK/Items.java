@@ -1,5 +1,9 @@
 package befaster.solutions.CHK;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /*
 +------+-------+------------------------+
 | Item | Price | Special offers         |
@@ -35,31 +39,36 @@ package befaster.solutions.CHK;
  */
 public class Items {
 
-    public static Item A = new Item('A', 50);
-    public static Item B = new Item('B', 50);
-    public static Item C = new Item('C', 50);
-    public static Item D = new Item('D', 50);
-    public static Item E = new Item('E', 50);
-    public static Item F = new Item('F', 50);
-    public static Item G = new Item('G', 50);
-    public static Item H = new Item('H', 50);
-    public static Item I = new Item('I', 50);
-    public static Item J = new Item('J', 50);
-    public static Item K = new Item('K', 50);
-    public static Item L = new Item('L', 50);
-    public static Item M = new Item('M', 50);
-    public static Item N = new Item('N', 50);
-    public static Item O = new Item('O', 50);
-    public static Item P = new Item('P', 50);
-    public static Item Q = new Item('Q', 50);
-    public static Item R = new Item('R', 50);
-    public static Item S = new Item('S', 50);
-    public static Item T = new Item('T', 50);
-    public static Item U = new Item('U', 50);
-    public static Item V = new Item('V', 50);
-    public static Item W = new Item('W', 50);
-    public static Item X = new Item('X', 50);
-    public static Item Y = new Item('Y', 50);
-    public static Item Z = new Item('Z', 50);
+    public static final Item A = new Item('A', 50);
+    public static final Item B = new Item('B', 30);
+    public static final Item C = new Item('C', 20);
+    public static final Item D = new Item('D', 15);
+    public static final Item E = new Item('E', 40);
+    public static final Item F = new Item('F', 10);
+    public static final Item G = new Item('G', 20);
+    public static final Item H = new Item('H', 10);
+    public static final Item I = new Item('I', 35);
+    public static final Item J = new Item('J', 60);
+    public static final Item K = new Item('K', 80);
+    public static final Item L = new Item('L', 90);
+    public static final Item M = new Item('M', 15);
+    public static final Item N = new Item('N', 40);
+    public static final Item O = new Item('O', 10);
+    public static final Item P = new Item('P', 50);
+    public static final Item Q = new Item('Q', 30);
+    public static final Item R = new Item('R', 50);
+    public static final Item S = new Item('S', 30);
+    public static final Item T = new Item('T', 20);
+    public static final Item U = new Item('U', 40);
+    public static final Item V = new Item('V', 50);
+    public static final Item W = new Item('W', 20);
+    public static final Item X = new Item('X', 90);
+    public static final Item Y = new Item('Y', 10);
+    public static final Item Z = new Item('Z', 50);
+
+
+    public static final List<Item> allItems = Collections.unmodifiableList(Arrays.asList(
+            A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+    ));
 
 }

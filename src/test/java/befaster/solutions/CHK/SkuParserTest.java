@@ -47,7 +47,7 @@ public class SkuParserTest {
 
         String input1 = "A A A A B B C D Aa";
         String input2 = "A A A A B B C D 1";
-        String input3 = "A A A A Z B B C D";
+        String input3 = "A A A A z B B C D";
         String input4 = "012A";
 
         assertThat(SkuParser.isValidInput(input1)).isFalse();
