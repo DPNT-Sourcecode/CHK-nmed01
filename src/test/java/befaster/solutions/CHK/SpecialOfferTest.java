@@ -5,7 +5,8 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class SpecialOfferTest {
 
@@ -17,15 +18,19 @@ public class SpecialOfferTest {
                 new Item('A', 60)
         ), 100);
 
-        List<Item> shoppingBasket = Arrays.asList(
+        List<Item> shoppingBasket1 = Arrays.asList(
                 new Item('A', 60),
                 new Item('A', 60),
                 new Item('B', 20)
         );
 
+        List<Item> shoppingBasket2 = Arrays.asList(
+                new Item('A', 60),
+                new Item('B', 20)
+        );
 
-        assertThat(specialOffer.doesApply(shoppingBasket), isTrue())
-
+        assertThat(specialOffer.doesApply(shoppingBasket1)).isTrue();
+        assertThat(specialOffer.doesApply(shoppingBasket2)).isFalse();
 
     }
 
