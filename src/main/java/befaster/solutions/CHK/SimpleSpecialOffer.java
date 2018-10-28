@@ -1,7 +1,6 @@
 package befaster.solutions.CHK;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class SimpleSpecialOffer implements SpecialOffer {
@@ -18,14 +17,17 @@ public class SimpleSpecialOffer implements SpecialOffer {
         return items;
     }
 
+    @Override
     public int getPromotionPrice() {
         return promotionPrice;
     }
 
-    public int getAmountSaved() {
+    @Override
+    public int getAmountSaved(List<Item> itemsInShoppingBasket) {
         return items.stream().mapToInt(Item::getPrice).sum() - promotionPrice;
     }
 
+    @Override
     public boolean doesApply(List<Item> itemsInShoppingBasket) {
 
         List<Item> remainingInShoppingBasket = new ArrayList<>(itemsInShoppingBasket);
@@ -46,6 +48,7 @@ public class SimpleSpecialOffer implements SpecialOffer {
      * @param itemsInShoppingBasket
      * @return items in the shopping basket not in promotion
      */
+    @Override
     public List<Item> apply(List<Item> itemsInShoppingBasket) {
 
         List<Item> remainingInShoppingBasket = new ArrayList<>(itemsInShoppingBasket);
@@ -61,15 +64,6 @@ public class SimpleSpecialOffer implements SpecialOffer {
 
         return remainingInShoppingBasket;
 
-
-    }
-
-    public static class AmountSavedComparator implements Comparator<SimpleSpecialOffer> {
-
-        @Override
-        public int compare(SimpleSpecialOffer o1, SimpleSpecialOffer o2) {
-            return Integer.compare(o1.getAmountSaved(), o2.getAmountSaved());
-        }
     }
 
 

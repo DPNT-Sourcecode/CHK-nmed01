@@ -43,7 +43,7 @@ public class CheckoutSolution {
     private SimpleSpecialOffer getAvailableSpecialOffer(List<Item> items, List<SimpleSpecialOffer> allSpecialOffers) {
         return allSpecialOffers.stream()
                 .filter(offer -> offer.doesApply(items))
-                .sorted(new SimpleSpecialOffer.AmountSavedComparator().reversed())
+                .sorted(new SimpleSpecialOffer.AmountSavedComparator(items).reversed())
                 .findFirst().get();
     }
 
