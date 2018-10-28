@@ -84,7 +84,8 @@ public class CheckoutSolution {
                 new SpecialOffer( // 2E get one B free - we don't need to worry about the value of B at the moment
                         asList(
                                 new Item('E', 40),
-                                new Item('E', 40)),
+                                new Item('E', 40),
+                                new Item('B', 30)),
                         80
                 )
         );

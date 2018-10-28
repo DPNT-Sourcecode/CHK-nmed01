@@ -83,13 +83,14 @@ public class CheckoutSolutionTest {
 
         assertThat(checkoutSolution.checkout("EEB")).isEqualTo(80);
 
-        assertThat(checkoutSolution.checkout("EEEBB")).isEqualTo(120);
+        assertThat(checkoutSolution.checkout("EEEB")).isEqualTo(120);
 
-        assertThat(checkoutSolution.checkout("EEEBB")).isEqualTo(120);
+        assertThat(checkoutSolution.checkout("EEEEBB")).isEqualTo(160);
 
-        "EEB"],"id":"CHK_R2_025"}, expected: 80, got: 110
-            - {"method":"checkout","params":["EEEB"],"id":"CHK_R2_026"}, expected: 120, got: 150
-            - {"method":"checkout","params":["EEEEBB"
+        assertThat(checkoutSolution.checkout("EEEEBBB")).isEqualTo(190);
+        assertThat(checkoutSolution.checkout("EEEEBBBB")).isEqualTo(205);
+
+
     }
 
 
