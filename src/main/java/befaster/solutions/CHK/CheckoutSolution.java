@@ -1,5 +1,7 @@
 package befaster.solutions.CHK;
 
+import java.util.List;
+
 /*
 +------+-------+----------------+
 | Item | Price | Special offers |
@@ -17,5 +19,9 @@ public class CheckoutSolution {
 
     }
 
-    private parse
+    private List<Item> parseSkus(String skus) {
+
+        skus.spl
+
+    }
 }
