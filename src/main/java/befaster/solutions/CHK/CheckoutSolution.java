@@ -31,10 +31,13 @@ public class CheckoutSolution {
         List<SpecialOffer> applicableSpecialOffers = new ArrayList<>();
         List<Item> itemsNotInPromotion = new ArrayList<>();
 
-        
+
 
         return null;
     }
+
+    private
+
 
     private List<SpecialOffer> getSpecialOffers() {
         return asList(
