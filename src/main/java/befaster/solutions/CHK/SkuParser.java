@@ -2,23 +2,27 @@ package befaster.solutions.CHK;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SkuParser {
 
     private static List<Item> parseSkus(String skus) throws SkuParsingException {
 
-        List<String> skusList = Arrays.asList(skus.split("\\s+"));
+        List<String> skuStringList = Arrays.asList(skus.split("\\s+"));
 
-        if(skusList.isEmpty()) {
-            throw new SkuParsingException("")
-        }
-
-        if(skusList.stream().anyMatch(skuString -> !isValidSkuString(skuString))) {
+        if(isValidSkuStringList(skuStringList)) {
 
             throw new SkuParsingException("String contains invalid sku");
         }
 
+        return skuStringList.stream()
+                .map(skuString -> skuString.charAt(0))
+                .map(SkuParser::parseSku)
+                .collect(Collectors.toList());
+    }
 
+    private static boolean isValidSkuStringList(List<String> skusList) {
+        return skusList.stream().anyMatch(skuString -> !isValidSkuString(skuString));
     }
 
     private static boolean isValidSkuString(String skuString) {
@@ -29,7 +33,7 @@ public class SkuParser {
         return Arrays.asList('A', 'B', 'C', 'D');
     }
 
-    private static Item parseSku(char sku) throws SkuParsingException {
+    private static Item parseSku(char sku) {
         switch (sku) {
             case 'A':
                 return new Item('A', 50);
@@ -41,7 +45,7 @@ public class SkuParser {
                 return new Item('D', 15);
         }
 
-        throw new SkuParsingException("sku not recognised");
+        throw new RuntimeException("sku not recognised");
     }
 
 }
