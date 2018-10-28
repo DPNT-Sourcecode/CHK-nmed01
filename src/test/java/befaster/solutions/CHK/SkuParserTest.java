@@ -2,9 +2,7 @@ package befaster.solutions.CHK;
 
 import org.junit.Test;
 
-import java.util.List;
-
-import static org.junit.Assert.fail;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SkuParserTest {
 
@@ -13,15 +11,7 @@ public class SkuParserTest {
 
         String input = "A A A A B B C D A";
 
-        try {
-            List<Item> items = SkuParser.parseSkus(input);
-
-            items.
-
-        } catch (SkuParsingException e) {
-            e.printStackTrace();
-            fail();
-        }
+        assertThat(SkuParser.isValidInput(input)).isTrue();
 
     }
 

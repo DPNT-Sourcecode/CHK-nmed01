@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 
 public class SkuParser {
 
-    public static List<Item> parseSkus(String skus) {
+    public static List<Item> parseSkus(String input) {
 
-        List<String> skuStringList = Arrays.asList(skus.split("\\s+"));
+        List<String> skuStringList = splitInput(input);
 
-        if(isValidSkuStringList(skuStringList)) {
+        if(isValidSkuList(skuStringList)) {
 
             throw new SkuParsingException("String contains invalid sku");
         }
@@ -21,8 +21,16 @@ public class SkuParser {
                 .collect(Collectors.toList());
     }
 
-    private static boolean isValidSkuStringList(List<String> skusList) {
-        return skusList.stream().anyMatch(skuString -> !isValidSkuString(skuString));
+    public static boolean isValidInput(String input) {
+        return isValidSkuList(splitInput(input));
+    }
+
+    private static List<String> splitInput(String skus) {
+        return Arrays.asList(skus.split("\\s+"));
+    }
+
+    private static boolean isValidSkuList(List<String> skuList) {
+        return skuList.stream().anyMatch(skuString -> !isValidSkuString(skuString));
     }
 
     private static boolean isValidSkuString(String skuString) {
