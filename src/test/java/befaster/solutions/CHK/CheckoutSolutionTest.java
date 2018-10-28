@@ -89,6 +89,7 @@ public class CheckoutSolutionTest {
 
         assertThat(checkoutSolution.checkout("EEEEBBB")).isEqualTo(190);
         assertThat(checkoutSolution.checkout("EEEEBBBB")).isEqualTo(205);
+        assertThat(checkoutSolution.checkout("EEEEEBBBBB")).isEqualTo(275);
 
 
     }
