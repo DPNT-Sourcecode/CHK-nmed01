@@ -30,7 +30,7 @@ public class SkuParser {
     }
 
     private static boolean isValidSkuList(List<String> skuList) {
-        return skuList.stream().anyMatch(skuString -> !isValidSkuString(skuString));
+        return skuList.stream().allMatch(SkuParser::isValidSkuString);
     }
 
     private static boolean isValidSkuString(String skuString) {

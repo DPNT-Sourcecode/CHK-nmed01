@@ -17,7 +17,7 @@ import java.util.List;
 public class CheckoutSolution {
     public Integer checkout(String skus) {
 
-
+    return null;
 
     }
 
