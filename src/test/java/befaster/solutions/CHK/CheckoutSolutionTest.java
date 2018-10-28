@@ -108,4 +108,12 @@ public class CheckoutSolutionTest {
 
     }
 
+    @Test
+    public void test_R5() {
+
+        assertThat(checkoutSolution.checkout("STXYZ")).isEqualTo(82);
+        assertThat(checkoutSolution.checkout("STXYZAAA")).isEqualTo(212);
+
+    }
+
 }
