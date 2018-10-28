@@ -12,7 +12,10 @@ public class SkuParserTest {
     @Test
     public void testValid() {
 
-        String input = "A A A A B B C D A";
+        String input1 = "A A A A B B C D A";
+        String input2 = "AAAABBCDA";
+        String input3 = "AAA ABB CDA";
+
         List<Item> expectedItems = Arrays.asList(
                 new Item('A', 50),
                 new Item('A', 50),
@@ -26,18 +29,24 @@ public class SkuParserTest {
         );
 
 
-        assertThat(SkuParser.isValidInput(input)).isTrue();
-        assertThat(SkuParser.parseSkus(input)).containsExactlyInAnyOrderElementsOf(expectedItems);
+        assertThat(SkuParser.isValidInput(input1)).isTrue();
+        assertThat(SkuParser.parseSkus(input1)).containsExactlyInAnyOrderElementsOf(expectedItems);
+
+        assertThat(SkuParser.isValidInput(input2)).isTrue();
+        assertThat(SkuParser.parseSkus(input2)).containsExactlyInAnyOrderElementsOf(expectedItems);
+
+        assertThat(SkuParser.isValidInput(input3)).isTrue();
+        assertThat(SkuParser.parseSkus(input3)).containsExactlyInAnyOrderElementsOf(expectedItems);
 
     }
 
     @Test
     public void testInvalid() {
 
-        String input1 = "A A A A B B C D AA";
+        String input1 = "A A A A B B C D Aa";
         String input2 = "A A A A B B C D 1";
         String input3 = "A A A A E B B C D";
-        String input4 = "0 1 2 A";
+        String input4 = "012A";
 
         assertThat(SkuParser.isValidInput(input1)).isFalse();
         assertThat(SkuParser.isValidInput(input2)).isFalse();
