@@ -57,7 +57,7 @@ public class SpecialOfferTest {
 
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = SpecialOfferException.class)
     public void applyOnNotApplicableShoppingBasketTest() {
 
         SpecialOffer specialOffer = new SpecialOffer(Arrays.asList(

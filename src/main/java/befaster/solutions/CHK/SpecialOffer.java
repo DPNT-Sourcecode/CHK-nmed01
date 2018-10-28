@@ -50,7 +50,7 @@ public class SpecialOffer {
             boolean isRemoved = remainingInShoppingBasket.remove(requiredItem);
 
             if(!isRemoved) {
-                throw new RuntimeException("promotion does not apply");
+                throw new SpecialOfferException("promotion does not apply");
             }
         }
 
