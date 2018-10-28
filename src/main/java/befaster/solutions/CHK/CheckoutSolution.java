@@ -26,12 +26,15 @@ public class CheckoutSolution {
         List<String> skusList = Arrays.asList(skus.split("\\s+"));
 
         skusList.stream().filter(skuString -> {
-            return skuString.length() > 1
-        })
+            return skuString.length() > 1 && !getValidSkus().contains(skuString.charAt(0));
+        }).findAny().isPresent();
 
 
     }
 
+    private static List<Character> getValidSkus() {
+        return Arrays.asList('A', 'B', 'C', 'D');
+    }
 
     private static Item parseSku(char sku) {
         switch (sku) {
@@ -44,6 +47,8 @@ public class CheckoutSolution {
             case 'D':
                 return new Item('D', 15);
         }
+
+        throw new SkuParsingException()
     }
 
 }
