@@ -104,9 +104,21 @@ public class CheckoutSolution {
                         nTimes(Q, 3),
                         80
                 ),
-                new SpecialOffer( // 3Q for 80
-                        nTimes(Q, 3),
-                        80
+                new SpecialOffer( // 3R get one Q free
+                        asList(R, R, R, Q),
+                        Stream.of(R, R, R).mapToInt(Item::getPrice).sum()
+                ),
+                new SpecialOffer( // 3U get one U free
+                        asList(U, U, U, U),
+                        Stream.of(U, U, U).mapToInt(Item::getPrice).sum()
+                ),
+                new SpecialOffer( // 2V for 90
+                        asList(V, V),
+                        90
+                ),
+                new SpecialOffer( // 3V for 130
+                        asList(V, V, V),
+                        130
                 )
 
         );

@@ -35,7 +35,7 @@ public class CheckoutSolutionTest {
 
         assertThat(checkoutSolution.checkout("")).isEqualTo(0);
 
-        assertThat(checkoutSolution.checkout("Z")).isEqualTo(-1);
+        assertThat(checkoutSolution.checkout("zza")).isEqualTo(-1);
         assertThat(checkoutSolution.checkout("test test")).isEqualTo(-1);
 
 
