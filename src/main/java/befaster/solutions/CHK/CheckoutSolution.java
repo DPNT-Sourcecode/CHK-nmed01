@@ -84,7 +84,7 @@ public class CheckoutSolution {
                 ),
                 new SimpleSpecialOffer( // 10H for 80
                         nTimes(K, 2),
-                        150
+                        120
                 ),
                 new SimpleSpecialOffer( //3N get one M free
                         asList(N, N, N, M),
