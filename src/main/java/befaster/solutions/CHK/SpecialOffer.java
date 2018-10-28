@@ -59,4 +59,7 @@ public class SpecialOffer {
 
     }
 
+    public static CustomerGainComparator implements Comparator()
+
+
 }

@@ -56,18 +56,33 @@ public class CheckoutSolution {
 
     private List<SpecialOffer> getSpecialOffers() {
         return asList(
-                new SpecialOffer(
+                new SpecialOffer( //3A for 130
                         asList(
                                 new Item('A', 50),
                                 new Item('A', 50),
                                 new Item('A', 50)),
                         130
                 ),
-                new SpecialOffer(
+                new SpecialOffer( //5A for 200
+                        asList(
+                                new Item('A', 50),
+                                new Item('A', 50),
+                                new Item('A', 50),
+                                new Item('A', 50),
+                                new Item('A', 50)),
+                        200
+                ),
+                new SpecialOffer( //2B for 45
                         asList(
                                 new Item('B', 30),
                                 new Item('B', 30)),
                         45
+                ),
+                new SpecialOffer( // 2E get one B free - we don't need to worry about the value of B at the moment
+                        asList(
+                                new Item('E', 40),
+                                new Item('E', 40)),
+                        80
                 )
         );
     }
