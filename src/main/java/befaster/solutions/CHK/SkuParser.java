@@ -10,7 +10,7 @@ public class SkuParser {
 
         List<String> skuStringList = splitInput(input);
 
-        if(isValidSkuList(skuStringList)) {
+        if(!isValidSkuList(skuStringList)) {
 
             throw new SkuParsingException("String contains invalid sku");
         }
