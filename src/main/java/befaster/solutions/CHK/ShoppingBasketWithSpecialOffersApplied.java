@@ -4,16 +4,16 @@ import java.util.List;
 
 public class ShoppingBasketWithSpecialOffersApplied {
 
-    private final List<SpecialOffer> applicableSpecialOffers;
+    private final List<SimpleSpecialOffer> applicableSpecialOffers;
     private final List<Item> itemsNotInPromotion;
 
-    public ShoppingBasketWithSpecialOffersApplied(List<SpecialOffer> applicableSpecialOffers, List<Item> itemsNotInPromotion) {
+    public ShoppingBasketWithSpecialOffersApplied(List<SimpleSpecialOffer> applicableSpecialOffers, List<Item> itemsNotInPromotion) {
         this.applicableSpecialOffers = applicableSpecialOffers;
         this.itemsNotInPromotion = itemsNotInPromotion;
     }
 
 
-    public List<SpecialOffer> getApplicableSpecialOffers() {
+    public List<SimpleSpecialOffer> getApplicableSpecialOffers() {
         return applicableSpecialOffers;
     }
 
@@ -24,7 +24,7 @@ public class ShoppingBasketWithSpecialOffersApplied {
 
     public Integer getPrice() {
 
-        Integer amountInPromotions = applicableSpecialOffers.stream().mapToInt(SpecialOffer::getPromotionPrice).sum();
+        Integer amountInPromotions = applicableSpecialOffers.stream().mapToInt(SimpleSpecialOffer::getPromotionPrice).sum();
         Integer amountNotInPromotions = itemsNotInPromotion.stream().mapToInt(Item::getPrice).sum();
 
         return amountInPromotions + amountNotInPromotions;

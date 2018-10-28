@@ -17,7 +17,7 @@ public class CheckoutSolution {
             return -1;
         }
 
-        List<SpecialOffer> allSpecialOffers = getSpecialOffers();
+        List<SimpleSpecialOffer> allSpecialOffers = getSpecialOffers();
         List<Item> shoppingBasket = SkuParser.parseSkus(skus);
 
         ShoppingBasketWithSpecialOffersApplied shoppingBasketWithSpecialOffersApplied = applyPromotions(shoppingBasket, allSpecialOffers);
@@ -25,13 +25,13 @@ public class CheckoutSolution {
         return shoppingBasketWithSpecialOffersApplied.getPrice();
     }
 
-    private ShoppingBasketWithSpecialOffersApplied applyPromotions(List<Item> shoppingBasket, List<SpecialOffer> allSpecialOffers) {
+    private ShoppingBasketWithSpecialOffersApplied applyPromotions(List<Item> shoppingBasket, List<SimpleSpecialOffer> allSpecialOffers) {
 
-        List<SpecialOffer> applicableSpecialOffers = new ArrayList<>();
+        List<SimpleSpecialOffer> applicableSpecialOffers = new ArrayList<>();
         List<Item> itemsNotInPromotion = new ArrayList<>(shoppingBasket);
 
         while (isSpecialOfferAvailable(itemsNotInPromotion, allSpecialOffers)) {
-            SpecialOffer specialOffer = getAvailableSpecialOffer(itemsNotInPromotion, allSpecialOffers);
+            SimpleSpecialOffer specialOffer = getAvailableSpecialOffer(itemsNotInPromotion, allSpecialOffers);
             itemsNotInPromotion = specialOffer.apply(itemsNotInPromotion);
             applicableSpecialOffers.add(specialOffer);
         }
@@ -40,76 +40,76 @@ public class CheckoutSolution {
 
     }
 
-    private SpecialOffer getAvailableSpecialOffer(List<Item> items, List<SpecialOffer> allSpecialOffers) {
+    private SimpleSpecialOffer getAvailableSpecialOffer(List<Item> items, List<SimpleSpecialOffer> allSpecialOffers) {
         return allSpecialOffers.stream()
                 .filter(offer -> offer.doesApply(items))
-                .sorted(new SpecialOffer.AmountSavedComparator().reversed())
+                .sorted(new SimpleSpecialOffer.AmountSavedComparator().reversed())
                 .findFirst().get();
     }
 
-    private boolean isSpecialOfferAvailable(List<Item> items, List<SpecialOffer> allSpecialOffers) {
+    private boolean isSpecialOfferAvailable(List<Item> items, List<SimpleSpecialOffer> allSpecialOffers) {
         return allSpecialOffers.stream().anyMatch(offer -> offer.doesApply(items));
     }
 
-    private List<SpecialOffer> getSpecialOffers() {
+    private List<SimpleSpecialOffer> getSpecialOffers() {
         return asList(
-                new SpecialOffer( //3A for 130
+                new SimpleSpecialOffer( //3A for 130
                         asList(A, A, A),
                         130
                 ),
-                new SpecialOffer( //5A for 200
+                new SimpleSpecialOffer( //5A for 200
                         nTimes(A, 5),
                         200
                 ),
-                new SpecialOffer( //2B for 45
+                new SimpleSpecialOffer( //2B for 45
                         asList(B, B),
                         45
                 ),
-                new SpecialOffer( // 2E get one B free
+                new SimpleSpecialOffer( // 2E get one B free
                         asList(E, E, B),
                         Stream.of(E, E).mapToInt(Item::getPrice).sum()
                 ),
-                new SpecialOffer( // 2F get one F free
+                new SimpleSpecialOffer( // 2F get one F free
                         asList(F, F, F),
                         Stream.of(F, F).mapToInt(Item::getPrice).sum()
                 ),
-                new SpecialOffer( // 5H for 45
+                new SimpleSpecialOffer( // 5H for 45
                         asList(H, H, H, H, H),
                         45
                 ),
-                new SpecialOffer( // 10H for 80
+                new SimpleSpecialOffer( // 10H for 80
                         nTimes(H, 10),
                         80
                 ),
-                new SpecialOffer( // 10H for 80
+                new SimpleSpecialOffer( // 10H for 80
                         nTimes(K, 2),
                         150
                 ),
-                new SpecialOffer( //3N get one M free
+                new SimpleSpecialOffer( //3N get one M free
                         asList(N, N, N, M),
                         Stream.of(N, N, N).mapToInt(Item::getPrice).sum()
                 ),
-                new SpecialOffer( // 5P for 200
+                new SimpleSpecialOffer( // 5P for 200
                         nTimes(P, 5),
                         200
                 ),
-                new SpecialOffer( // 3Q for 80
+                new SimpleSpecialOffer( // 3Q for 80
                         nTimes(Q, 3),
                         80
                 ),
-                new SpecialOffer( // 3R get one Q free
+                new SimpleSpecialOffer( // 3R get one Q free
                         asList(R, R, R, Q),
                         Stream.of(R, R, R).mapToInt(Item::getPrice).sum()
                 ),
-                new SpecialOffer( // 3U get one U free
+                new SimpleSpecialOffer( // 3U get one U free
                         asList(U, U, U, U),
                         Stream.of(U, U, U).mapToInt(Item::getPrice).sum()
                 ),
-                new SpecialOffer( // 2V for 90
+                new SimpleSpecialOffer( // 2V for 90
                         asList(V, V),
                         90
                 ),
-                new SpecialOffer( // 3V for 130
+                new SimpleSpecialOffer( // 3V for 130
                         asList(V, V, V),
                         130
                 )

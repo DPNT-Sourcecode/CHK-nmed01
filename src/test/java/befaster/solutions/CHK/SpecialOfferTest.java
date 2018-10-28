@@ -2,7 +2,6 @@ package befaster.solutions.CHK;
 
 import org.junit.Test;
 
-import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class SpecialOfferTest {
     @Test
     public void doesApplyTest() {
 
-        SpecialOffer specialOffer = new SpecialOffer(Arrays.asList(
+        SimpleSpecialOffer specialOffer = new SimpleSpecialOffer(Arrays.asList(
                 new Item('A', 60),
                 new Item('A', 60)
         ), 100);
@@ -38,7 +37,7 @@ public class SpecialOfferTest {
     @Test
     public void applyTest() {
 
-        SpecialOffer specialOffer = new SpecialOffer(Arrays.asList(
+        SimpleSpecialOffer specialOffer = new SimpleSpecialOffer(Arrays.asList(
                 new Item('A', 60),
                 new Item('A', 60)
         ), 100);
@@ -61,18 +60,18 @@ public class SpecialOfferTest {
     @Test
     public void getAmountSavedTest() {
 
-        SpecialOffer specialOffer1 = new SpecialOffer(Arrays.asList(
+        SimpleSpecialOffer specialOffer1 = new SimpleSpecialOffer(Arrays.asList(
                 new Item('A', 60),
                 new Item('A', 60)
         ), 100);
 
-        SpecialOffer specialOffer2 = new SpecialOffer(Arrays.asList(
+        SimpleSpecialOffer specialOffer2 = new SimpleSpecialOffer(Arrays.asList(
                 new Item('A', 10),
                 new Item('B', 20),
                 new Item('C', 30)
         ), 50);
 
-        SpecialOffer specialOffer3 = new SpecialOffer(Arrays.asList(
+        SimpleSpecialOffer specialOffer3 = new SimpleSpecialOffer(Arrays.asList(
                 new Item('A', 10),
                 new Item('A', 10)
         ), 100);
@@ -87,7 +86,7 @@ public class SpecialOfferTest {
     @Test(expected = SpecialOfferException.class)
     public void applyOnNotApplicableShoppingBasketTest() {
 
-        SpecialOffer specialOffer = new SpecialOffer(Arrays.asList(
+        SimpleSpecialOffer specialOffer = new SimpleSpecialOffer(Arrays.asList(
                 new Item('A', 60),
                 new Item('A', 60)
         ), 100);
@@ -105,26 +104,26 @@ public class SpecialOfferTest {
     @Test
     public void amountSavedComparatorTest() {
 
-        SpecialOffer specialOffer1 = new SpecialOffer(Arrays.asList(
+        SimpleSpecialOffer specialOffer1 = new SimpleSpecialOffer(Arrays.asList(
                 new Item('A', 60),
                 new Item('A', 60)
         ), 100);
 
-        SpecialOffer specialOffer2 = new SpecialOffer(Arrays.asList(
+        SimpleSpecialOffer specialOffer2 = new SimpleSpecialOffer(Arrays.asList(
                 new Item('A', 10),
                 new Item('B', 20),
                 new Item('C', 30)
         ), 50);
 
-        SpecialOffer specialOffer3 = new SpecialOffer(Arrays.asList(
+        SimpleSpecialOffer specialOffer3 = new SimpleSpecialOffer(Arrays.asList(
                 new Item('A', 10),
                 new Item('A', 10)
         ), 100);
 
 
-        List<SpecialOffer> offers = Arrays.asList(specialOffer2, specialOffer1, specialOffer3);
+        List<SimpleSpecialOffer> offers = Arrays.asList(specialOffer2, specialOffer1, specialOffer3);
 
-        offers.sort(new SpecialOffer.AmountSavedComparator().reversed());
+        offers.sort(new SimpleSpecialOffer.AmountSavedComparator().reversed());
 
         assertThat(offers).containsExactly(specialOffer1, specialOffer2, specialOffer3);
 
