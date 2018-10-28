@@ -1,56 +1,36 @@
 package befaster.solutions.CHK;
 
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class SkuParser {
 
     public static List<Item> parseSkus(String input) {
 
-        String skuString = splitInput(input);
+        String skuString = cleanInput(input);
 
-        if(!isValidSkuList(skuStringList)) {
+        if (!isValidInput(skuString)) {
 
             throw new SkuParsingException("String contains invalid sku");
         }
 
-        return skuStringList.stream()
-                .map(CharSequence::chars).flatMap((c -> (char) c)
+        return skuString.chars().mapToObj(c -> (char) c)
                 .map(SkuParser::parseSku)
                 .collect(Collectors.toList());
     }
 
     public static boolean isValidInput(String input) {
-        return isValidSkuList(splitInput(input));
+        return isValidSkuString(cleanInput(input));
     }
 
     private static String cleanInput(String input) {
         return input.replaceAll("\\s+", input);
     }
-//    private static List<String> splitInput(String skus) {
-//
-//        if(StringUtils.isBlank(skus)) {
-//            return new ArrayList<>();
-//        }
-//
-//        return Arrays.asList(skus.split("\\s+"));
-//    }
-
-    private static boolean isValidSkuList(List<String> skuList) {
-        return skuList.stream().allMatch(SkuParser::isValidSkuString);
-    }
 
     private static boolean isValidSkuString(String skuString) {
 
-        skuString.chars().mapToObj()
-
-        return skuString.length() == 1 && getValidSkus().contains(skuString.charAt(0));
+        return skuString.chars().mapToObj(c -> (char) c).allMatch(character -> getValidSkus().contains(character));
     }
 
     private static List<Character> getValidSkus() {
